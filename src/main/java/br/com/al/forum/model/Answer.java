@@ -2,13 +2,26 @@ package br.com.al.forum.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Answer {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String message;
+
+	@ManyToOne
 	private Topic topic;
 	private LocalDateTime createdAt = LocalDateTime.now();
+	@ManyToOne
 	private User author;
+
 	private Boolean isSolution = false;
 
 	@Override
